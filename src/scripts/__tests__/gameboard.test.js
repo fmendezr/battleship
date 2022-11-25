@@ -7,8 +7,8 @@ test("should first create a gameboard ", () => {
 
 test("should place ship in gameboard horizontaly ", () => {
   const gameboard = gameboardFactory();
-  gameboard.placeShip(0, "x", { length: 2 });
-  expect(gameboard.gameboard[10].containsShip).toEqual({
+  gameboard.placeShip(10, "x", { length: 2 });
+  expect(gameboard.gameboard[11].containsShip).toEqual({
     length: 2,
   });
 });
