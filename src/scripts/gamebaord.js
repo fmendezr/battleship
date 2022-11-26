@@ -21,6 +21,19 @@ const gameboardFactory = () => {
     }
   };
 
+  const receiveAttack = (coordinate) => {
+    const location = gameboard[coordinate];
+    location.hasBeenHit = true;
+    if (location.containsShip != false) {
+      location.containsShip.hit();
+      if (location.containsShip.isSunk()) {
+        return "Ship has sunk";
+      }
+      return "HIT";
+    }
+    return "Missed";
+  };
+
   const findLocations = (coordinate, axis, length) => {
     let locations = [];
     for (let i = 0; i < length; i++) {
@@ -52,6 +65,7 @@ const gameboardFactory = () => {
   return {
     gameboard,
     placeShip,
+    receiveAttack,
   };
 };
 
