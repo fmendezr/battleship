@@ -1,5 +1,5 @@
 import { gameboardFactory } from "../gamebaord";
-import { ship, shipFactory } from "../ship";
+import { shipFactory } from "../ship";
 
 describe("Gameboard functions", () => {
   let gameboard;
@@ -64,5 +64,19 @@ describe("Gameboard functions", () => {
     const ship = shipFactory(1);
     gameboard.placeShip(1, "x", ship);
     expect(gameboard.receiveAttack(1)).toBe("Ship has sunk");
+  });
+
+  test("should check whether allShipsAreSunk works when there are still ships in the gamebaord", () => {
+    const ship = shipFactory(1);
+    gameboard.placeShip(1, "x", ship);
+    expect(gameboard.allShipsSunk()).toBeFalsy();
+  });
+
+  test("should check whether allShipAreSunk works when all ships have been sunk", () => {
+    const ship = shipFactory(2);
+    gameboard.placeShip(1, "x", ship);
+    gameboard.receiveAttack(1);
+    gameboard.receiveAttack(2);
+    expect(gameboard.allShipsSunk()).toBeTruthy();
   });
 });
