@@ -1,7 +1,7 @@
-import { check } from "prettier";
-
 const gameboardFactory = () => {
   let gameboard = [];
+  const missedShots = [];
+  let ships = [];
 
   for (let i = 0; i < 100; i++) {
     gameboard.push({
@@ -16,6 +16,7 @@ const gameboardFactory = () => {
       for (let i = 0; i < locationArr.length; i++) {
         gameboard[locationArr[i]].containsShip = ship;
       }
+      ships.push(ship);
     } else {
       return "Invalid locations";
     }
@@ -27,11 +28,16 @@ const gameboardFactory = () => {
     if (location.containsShip != false) {
       location.containsShip.hit();
       if (location.containsShip.isSunk()) {
+        ships = ships.filter((ship) => ship != location.containsShip);
         return "Ship has sunk";
       }
       return "HIT";
     }
     return "Missed";
+  };
+
+  const allShipsSunk = () => {
+    return ships.length == 0;
   };
 
   const findLocations = (coordinate, axis, length) => {
@@ -66,6 +72,7 @@ const gameboardFactory = () => {
     gameboard,
     placeShip,
     receiveAttack,
+    allShipsSunk,
   };
 };
 
