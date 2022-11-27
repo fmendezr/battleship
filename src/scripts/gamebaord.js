@@ -33,6 +33,7 @@ const gameboardFactory = () => {
       }
       return "HIT";
     }
+    missedShots.push(coordinate);
     return "Missed";
   };
 
