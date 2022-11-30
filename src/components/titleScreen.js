@@ -53,7 +53,7 @@ const renderTitleScreen = () => {
   secondPlayerContainer.appendChild(playerTwoLabel);
 
   const playerTwoInput = document.createElement("input");
-  playerTwoInput.classList.add("PlayerNameInput");
+  playerTwoInput.classList.add("playerNameInput");
   playerTwoInput.id = "playerTwoInput";
   secondPlayerContainer.appendChild(playerTwoInput);
 
