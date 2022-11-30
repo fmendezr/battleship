@@ -12,9 +12,9 @@ html {
 
 main {
     display: flex;
+    gap: 5rem;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .bigTitle {
@@ -47,6 +47,7 @@ main {
 
 .playerNameInput {
     border: 1.5px solid black;
+    font-family: Copperplate, "Copperplate Gothic Light", fantasy;
     padding-left: 0.25rem;
     font-size: 1.75rem;
 }
@@ -58,6 +59,6 @@ main {
     border: 2px solid black;
     border-radius: 0.75rem;
     position: absolute;
-    top: 125%;
+    top: 200%;
     left: 30%;
 }
