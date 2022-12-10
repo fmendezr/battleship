@@ -62,3 +62,20 @@ main {
     top: 200%;
     left: 30%;
 }
+
+.gameboard {
+    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    height: 40rem;
+    width: 40rem;
+}
+
+.cell {
+    background-color: white;
+    border: 3px solid black;
+}
+
+.containsShip {
+    background: red;
+}
