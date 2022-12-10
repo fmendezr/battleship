@@ -75,6 +75,8 @@ const gameboardFactory = () => {
     receiveAttack,
     allShipsSunk,
     ships,
+    findLocations,
+    checkValidLocation,
   };
 };
 
