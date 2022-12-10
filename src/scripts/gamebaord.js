@@ -74,6 +74,7 @@ const gameboardFactory = () => {
     placeShip,
     receiveAttack,
     allShipsSunk,
+    ships,
   };
 };
 
