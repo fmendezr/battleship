@@ -14,7 +14,7 @@ const renderPlaceShipScreen = (player) => {
 
   const gameboardContainer = document.createElement("div");
   gameboardContainer.classList.add("gameboard");
-  main.appendChild();
+  main.appendChild(gameboardContainer);
 
   for (let i = 0; i < player.gameboard.gameboard.length; i++) {
     let cell = document.createElement("div");
@@ -23,3 +23,5 @@ const renderPlaceShipScreen = (player) => {
     gameboardContainer.appendChild(cell);
   }
 };
+
+export { renderPlaceShipScreen };
