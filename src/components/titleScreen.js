@@ -26,4 +26,7 @@ const renderTitleScreen = () => {
   const btn = document.createElement("button");
   btn.id = "startGameBtn";
   btn.textContent = "Start Game";
+  form.appendChild(btn);
 };
+
+export { renderTitleScreen };
