@@ -1,3 +1,6 @@
+import { game } from "../scripts/gameflow";
+import { renderPlaceShipScreen } from "./placeShipScreen";
+
 const renderTitleScreen = () => {
   const main = document.createElement("main");
   document.body.appendChild(main);
@@ -27,6 +30,14 @@ const renderTitleScreen = () => {
   btn.id = "startGameBtn";
   btn.textContent = "Start Game";
   form.appendChild(btn);
+  btn.prevent;
+
+  btn.addEventListener("click", (event) => {
+    event.preventDefault();
+    game.createPlayers(inputName.value);
+    renderPlaceShipScreen(game.playerOne);
+    main.remove();
+  });
 };
 
 export { renderTitleScreen };
