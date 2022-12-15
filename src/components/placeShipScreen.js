@@ -1,5 +1,8 @@
+import { game } from "../scripts/gameflow";
+
 const renderPlaceShipScreen = (player, shipObj) => {
   const main = document.createElement("main");
+  main.id = "main";
   document.body.appendChild(main);
 
   const title = document.createElement("h1");
@@ -35,6 +38,9 @@ const renderPlaceShipScreen = (player, shipObj) => {
     cell.id = i;
     cell.classList.add("cell");
     gameboardContainer.appendChild(cell);
+    if (player.gameboard.gameboard[i].containsShip != false) {
+      cell.classList.add("containsShip");
+    }
   }
 
   let cells = document.querySelectorAll(".cell");
@@ -59,6 +65,17 @@ const renderPlaceShipScreen = (player, shipObj) => {
       cells.forEach((cell) => {
         cell.classList.remove("valid", "invalid");
       });
+    });
+    cell.addEventListener("click", () => {
+      if (
+        player.gameboard.placeShip(
+          parseInt(cell.id),
+          axisBtn.value,
+          shipObj.ship
+        )
+      ) {
+        game.playerPlaceShips(game.playerOne);
+      }
     });
   });
 };

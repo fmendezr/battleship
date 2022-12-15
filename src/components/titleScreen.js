@@ -3,6 +3,7 @@ import { renderPlaceShipScreen } from "./placeShipScreen";
 
 const renderTitleScreen = () => {
   const main = document.createElement("main");
+  main.id = "main";
   document.body.appendChild(main);
 
   const title = document.createElement("h1");
@@ -35,8 +36,7 @@ const renderTitleScreen = () => {
   btn.addEventListener("click", (event) => {
     event.preventDefault();
     game.createPlayers(inputName.value);
-    renderPlaceShipScreen(game.playerOne);
-    main.remove();
+    game.playerPlaceShips(game.playerOne);
   });
 };
 

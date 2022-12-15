@@ -1,3 +1,4 @@
+import { renderPlaceShipScreen } from "../components/placeShipScreen";
 import { playerFactory } from "./player";
 import { shipFactory } from "./ship";
 
@@ -18,7 +19,14 @@ const game = {
     this.playerTwo = playerFactory(p2Name);
   },
 
-  playerShips(player) {},
+  playerPlaceShips(player) {
+    if (player.gameboard.ships.length == 5) return "all ships placed";
+    document.getElementById("main").remove();
+    renderPlaceShipScreen(
+      player,
+      this.typesOfShips[player.gameboard.ships.length]
+    );
+  },
 };
 
 export { game };
