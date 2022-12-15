@@ -17,8 +17,9 @@ const gameboardFactory = () => {
         gameboard[locationArr[i]].containsShip = ship;
       }
       ships.push(ship);
+      return true;
     } else {
-      return "Invalid locations";
+      return false;
     }
   };
 
@@ -58,7 +59,7 @@ const gameboardFactory = () => {
     );
 
     if (locations.some((index) => index >= 100)) return false;
-    else if (locations.some((index) => gameboard[index].containsShip == true))
+    else if (locations.some((index) => gameboard[index].containsShip != false))
       return false;
     else if (
       lineBreak.length > 0 &&
