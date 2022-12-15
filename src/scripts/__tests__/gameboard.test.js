@@ -35,6 +35,11 @@ describe("Gameboard functions", () => {
     expect(gameboard.gameboard[90].containsShip).toBeFalsy();
   });
 
+  test("should try to place a ship where another ship is located", () => {
+    gameboard.placeShip(80, "y", { length: 2 });
+    expect(gameboard.placeShip(90, "x", { length: 3 })).toBeFalsy();
+  });
+
   test("should atack an empty coordinate in the gameboard", () => {
     gameboard.receiveAttack(1);
     expect(gameboard.gameboard[1]).toEqual({
