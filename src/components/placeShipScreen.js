@@ -36,6 +36,31 @@ const renderPlaceShipScreen = (player, shipObj) => {
     cell.classList.add("cell");
     gameboardContainer.appendChild(cell);
   }
+
+  let cells = document.querySelectorAll(".cell");
+  cells.forEach((cell) => {
+    cell.addEventListener("mouseover", () => {
+      let locations = player.gameboard.findLocations(
+        parseInt(cell.id),
+        axisBtn.value,
+        shipObj.ship.length
+      );
+      if (player.gameboard.checkValidLocation(locations, axisBtn.value)) {
+        for (let i = 0; i < locations.length; i++) {
+          cells[locations[i]].classList.add("valid");
+        }
+      } else {
+        for (let i = 0; i < locations.length; i++) {
+          cells[locations[i]].classList.add("invalid");
+        }
+      }
+    });
+    cell.addEventListener("mouseout", () => {
+      cells.forEach((cell) => {
+        cell.classList.remove("valid", "invalid");
+      });
+    });
+  });
 };
 
 export { renderPlaceShipScreen };
