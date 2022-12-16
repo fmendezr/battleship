@@ -58,7 +58,7 @@ const gameboardFactory = () => {
       locations.includes(element)
     );
 
-    if (locations.some((index) => index >= 100 && index < 0)) return false;
+    if (locations.some((index) => index >= 100)) return false;
     else if (locations.some((index) => gameboard[index].containsShip != false))
       return false;
     else if (
