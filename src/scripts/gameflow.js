@@ -62,6 +62,14 @@ const game = {
       return this.playerTwo;
     }
   },
+
+  getOpposingPlayer() {
+    if (this.getActivePlayer() == this.playerOne) {
+      return this.playerTwo;
+    } else {
+      return this.playerOne;
+    }
+  },
 };
 
 export { game };
