@@ -37,12 +37,14 @@ const game = {
   aiPlaceShips(player = this.playerTwo) {
     for (let i = 0; i < 5; i++) {
       let coordinate = parseInt(Math.random() * 100);
-      let axis = this.getRandomAxis();
-      let ship = this.typesOfShips[i].ship;
-      console.log(coordinate, axis, ship);
-      while (player.gameboard.placeShip(coordinate, axis, ship) == false) {
+      while (
+        !player.gameboard.placeShip(
+          coordinate,
+          this.getRandomAxis(),
+          this.typesOfShips[i].ship
+        )
+      ) {
         coordinate = parseInt(Math.random() * 100);
-        axis = this.getRandomAxis();
       }
     }
   },
