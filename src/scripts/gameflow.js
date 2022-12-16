@@ -6,6 +6,7 @@ import { shipFactory } from "./ship";
 const game = {
   playerOne: null,
   playerTwo: null,
+  turns: 0,
 
   typesOfShips: [
     { type: "Carrier", ship: shipFactory(5) },
@@ -52,6 +53,14 @@ const game = {
   getRandomAxis() {
     let axis = Math.random();
     return axis < 0.5 ? "y" : "x";
+  },
+
+  getActivePlayer() {
+    if (turns % 2 == 0) {
+      return this.playerOne;
+    } else {
+      return this.playerTwo;
+    }
   },
 };
 
