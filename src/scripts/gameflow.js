@@ -23,6 +23,7 @@ const game = {
   playerPlaceShips(player) {
     if (player.gameboard.ships.length >= 5) {
       document.getElementById("main").remove();
+      this.aiPlaceShips();
       renderCombatScreen();
     } else {
       document.getElementById("main").remove();
@@ -31,6 +32,26 @@ const game = {
         this.typesOfShips[player.gameboard.ships.length]
       );
     }
+  },
+
+  aiPlaceShips(player = this.playerTwo) {
+    for (let i = 0; i < 5; i++) {
+      let coordinate = parseInt(Math.random() * 100);
+      while (
+        !player.gameboard.placeShip(
+          coordinate,
+          this.getRandomAxis(),
+          this.typesOfShips[i].ship
+        )
+      ) {
+        coordinate = parseInt(Math.random() * 100);
+      }
+    }
+  },
+
+  getRandomAxis() {
+    let axis = Math.random();
+    return axis < 0.5 ? "y" : "x";
   },
 };
 
