@@ -1,4 +1,5 @@
 import { renderPlaceShipScreen } from "../components/placeShipScreen";
+import { renderCombatScreen } from "../components/combatScreen";
 import { playerFactory } from "./player";
 import { shipFactory } from "./ship";
 
@@ -20,12 +21,16 @@ const game = {
   },
 
   playerPlaceShips(player) {
-    if (player.gameboard.ships.length == 5) return "all ships placed";
-    document.getElementById("main").remove();
-    renderPlaceShipScreen(
-      player,
-      this.typesOfShips[player.gameboard.ships.length]
-    );
+    if (player.gameboard.ships.length >= 5) {
+      document.getElementById("main").remove();
+      renderCombatScreen();
+    } else {
+      document.getElementById("main").remove();
+      renderPlaceShipScreen(
+        player,
+        this.typesOfShips[player.gameboard.ships.length]
+      );
+    }
   },
 };
 
