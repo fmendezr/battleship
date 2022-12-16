@@ -70,6 +70,12 @@ const game = {
       return this.playerOne;
     }
   },
+
+  checkWinner() {
+    if (this.getOpposingPlayer().ships.length == 0) {
+      return true;
+    }
+  },
 };
 
 export { game };
