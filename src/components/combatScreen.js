@@ -24,6 +24,10 @@ const renderCombatScreen = (player, opp) => {
     if (player.gameboard.gameboard[i].containsShip != false) {
       cell.classList.add("containsShip");
     }
+    let dot = document.createElement("div");
+    dot.classList.add("dot");
+    dot.id = `dot${i}`;
+    cell.appendChild(dot);
   }
 
   const oppGameboard = document.createElement("div");
@@ -35,6 +39,11 @@ const renderCombatScreen = (player, opp) => {
     cell.id = i;
     cell.classList.add("cell");
     oppGameboard.appendChild(cell);
+
+    let dot = document.createElement("div");
+    dot.classList.add("dot");
+    dot.id = `dot${i}`;
+    cell.appendChild(dot);
   }
 };
 
