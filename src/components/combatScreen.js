@@ -28,6 +28,15 @@ const renderCombatScreen = (player, opp) => {
     dot.classList.add("dot");
     dot.id = `dot${i}`;
     cell.appendChild(dot);
+
+    if (player.gameboard.gameboard[i].hasBeenHit == true) {
+      dot.classList.add("miss");
+    }
+    if (player.gameboard.gameboard[i].containsShip != false) {
+      if (player.gameboard.gameboard[i].hasBeenHit) {
+        dot.classList.add("hit");
+      }
+    }
   }
 
   const oppGameboard = document.createElement("div");
@@ -44,6 +53,19 @@ const renderCombatScreen = (player, opp) => {
     dot.classList.add("dot");
     dot.id = `dot${i}`;
     cell.appendChild(dot);
+
+    if (player.gameboard.gameboard[i].hasBeenHit == true) {
+      dot.classList.add("miss");
+    }
+
+    if (opp.gameboard.gameboard[i].containsShip != false) {
+      if (opp.gameboard.gameboard[i].hasBeenHit) {
+        dot.classList.add("hit");
+      }
+      if (opp.gameboard.gameboard[i].containsShip.isSunk()) {
+        cell.classList.add("containsShip");
+      }
+    }
   }
 };
 
