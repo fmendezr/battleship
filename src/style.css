@@ -10,6 +10,9 @@
 .cell {
     background-color: white;
     border: black 0.15rem solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -27,4 +30,20 @@
 
 .containsShip.invalid {
     background-color: #953553;
+}
+
+.dot {
+    height: .5rem;
+    width: 0.5rem;
+    background-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.miss {
+    background-color: black;
+}
+
+.hit {
+    background-color: red;
 }
