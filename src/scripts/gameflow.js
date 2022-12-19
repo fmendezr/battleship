@@ -25,7 +25,7 @@ const game = {
     if (player.gameboard.ships.length >= 5) {
       document.getElementById("main").remove();
       this.aiPlaceShips();
-      renderCombatScreen(this.playerOne);
+      renderCombatScreen(this.playerOne, this.playerTwo);
     } else {
       document.getElementById("main").remove();
       renderPlaceShipScreen(
@@ -56,7 +56,7 @@ const game = {
   },
 
   getActivePlayer() {
-    if (turns % 2 == 0) {
+    if (this.turns % 2 == 0) {
       return this.playerOne;
     } else {
       return this.playerTwo;
@@ -75,6 +75,14 @@ const game = {
     if (this.getOpposingPlayer().ships.length == 0) {
       return true;
     }
+  },
+
+  userTurn(coordinate, player) {
+    if (
+      player.attack(this.getOpposingPlayer().gameboard, coordinate) != false
+    ) {
+      this.turns += 1;
+    } else return false;
   },
 };
 
