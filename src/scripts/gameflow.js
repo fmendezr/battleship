@@ -84,6 +84,11 @@ const game = {
       this.turns += 1;
     } else return false;
   },
+
+  aiTurn(player = this.playerTwo) {
+    this.turns += 1;
+    player.attackRandomly(this.getOpposingPlayer().gameboard);
+  },
 };
 
 export { game };
