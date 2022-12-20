@@ -92,7 +92,13 @@ const game = {
 
   play(coordinate) {
     if (this.userTurn(coordinate, this.getActivePlayer()) != false) {
+      if (this.checkWinner(this.playerOne)) {
+        document.getElementById("main").remove();
+      }
       this.aiTurn();
+      if (this.checkWinner(this.playerOne)) {
+        document.getElementById("main").remove();
+      }
       renderCombatScreen(this.getActivePlayer(), this.getOpposingPlayer());
       console.log(this.playerTwo.gameboard.ships);
     }
