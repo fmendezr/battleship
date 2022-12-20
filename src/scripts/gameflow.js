@@ -87,7 +87,15 @@ const game = {
 
   aiTurn(player = this.playerTwo) {
     this.turns += 1;
-    player.attackRandomly(this.getOpposingPlayer().gameboard);
+    player.attackRandomly(this.playerOne.gameboard);
+  },
+
+  play(coordinate) {
+    if (this.userTurn(coordinate, this.getActivePlayer()) != false) {
+      this.aiTurn();
+      renderCombatScreen(this.getActivePlayer(), this.getOpposingPlayer());
+      console.log(this.playerTwo.gameboard.ships);
+    }
   },
 };
 
