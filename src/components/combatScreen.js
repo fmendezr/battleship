@@ -1,3 +1,5 @@
+import { game } from "../scripts/gameflow";
+
 const renderCombatScreen = (player, opp) => {
   const main = document.createElement("main");
   main.id = "main";
@@ -54,7 +56,7 @@ const renderCombatScreen = (player, opp) => {
     dot.id = `dot${i}`;
     cell.appendChild(dot);
 
-    if (player.gameboard.gameboard[i].hasBeenHit == true) {
+    if (opp.gameboard.gameboard[i].hasBeenHit == true) {
       dot.classList.add("miss");
     }
 
@@ -66,6 +68,10 @@ const renderCombatScreen = (player, opp) => {
         cell.classList.add("containsShip");
       }
     }
+
+    cell.addEventListener("click", () => {
+      game.play(parseInt(cell.id));
+    });
   }
 };
 
