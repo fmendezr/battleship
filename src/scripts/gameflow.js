@@ -71,8 +71,8 @@ const game = {
     }
   },
 
-  checkWinner() {
-    if (this.getOpposingPlayer().ships.length == 0) {
+  checkWinner(player) {
+    if (player.ships.length == 0) {
       return true;
     }
   },
