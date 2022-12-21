@@ -1,5 +1,6 @@
 import { renderPlaceShipScreen } from "../components/placeShipScreen";
 import { renderCombatScreen } from "../components/combatScreen";
+import { renderWinnerScreen } from "../components/winnerScreen";
 import { playerFactory } from "./player";
 import { shipFactory } from "./ship";
 
@@ -72,9 +73,7 @@ const game = {
   },
 
   checkWinner(player) {
-    if (player.ships.length == 0) {
-      return true;
-    }
+    return player.gameboard.allShipsSunk();
   },
 
   userTurn(coordinate, player) {
@@ -92,13 +91,16 @@ const game = {
 
   play(coordinate) {
     if (this.userTurn(coordinate, this.getActivePlayer()) != false) {
-      if (this.checkWinner(this.playerOne)) {
+      if (this.checkWinner(this.playerTwo)) {
         document.getElementById("main").remove();
+        renderWinnerScreen(this.playerOne);
       }
       this.aiTurn();
       if (this.checkWinner(this.playerOne)) {
         document.getElementById("main").remove();
+        renderWinnerScreen(this.playerTwo);
       }
+      document.getElementById("main").remove();
       renderCombatScreen(this.getActivePlayer(), this.getOpposingPlayer());
       console.log(this.playerTwo.gameboard.ships);
     }
