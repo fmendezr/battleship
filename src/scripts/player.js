@@ -6,7 +6,7 @@ const playerFactory = (name) => {
   const attack = (oppGameboard, coordinate) => {
     if (oppGameboard.gameboard[coordinate].hasBeenHit == false) {
       oppGameboard.receiveAttack(coordinate);
-    }
+    } else return false;
   };
 
   const attackRandomly = (oppGameboard) => {
